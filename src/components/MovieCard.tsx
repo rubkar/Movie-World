@@ -1,26 +1,24 @@
-import React from 'react';
-import { IMovieCard } from '../types/movie.type';
+import React, { FC } from 'react';
+import { IMovie } from '../services/movie/movie.types';
 
-
-export const MovieCard = (movie:IMovieCard) => {
+export const MovieCard: FC<IMovie> = ({ Poster, Title, Type, Year }) => {
   return (
-    <div className="movie" key={movie.movie.imdbID}>
+    <div className="movie">
       <div>
-        <p>{movie.movie.Year}</p>
+        <p>{Year}</p>
       </div>
 
       <div>
         <img
-          src={movie.movie.Poster !== 'N/A' ? movie.movie.Poster : 'https://via.placeholder.com/400'}
-          alt={movie.movie.Title}
+          src={Poster !== 'N/A' ? Poster : 'https://via.placeholder.com/400'}
+          alt={Title}
         />
       </div>
 
       <div>
-        <span>{movie.movie.Type}</span>
-        <h3>{movie.movie.Title}</h3>
+        <span>{Type}</span>
+        <h3>{Title}</h3>
       </div>
     </div>
   );
 };
-
